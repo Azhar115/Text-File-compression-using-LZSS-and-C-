@@ -3,58 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 
-
-namespace LZSSHashMap
+namespace LZSS
 {
     internal class TestClass
-    {/*       // ------------console output --------------
-
-        private const string InputFileNameForEncode = @"D:\c# vp\books\LZSS\one\inputforENcodecode.txt";
-        private const string OutputFileNameForEncode = @"D:\c# vp\books\LZSS\one\outputforencoding.txt";
-
-        private const string InputFileNameForDecode = @"D:\c# vp\books\LZSS\one\outputforencoding.txt";
-        private const string OutputFileNameForDecode = @"D:\c# vp\books\LZSS\one\outputfordecoding.txt";
-
-        public static void Main()
+    {
+        /*  static void data(string data)
+          {
+              char[] chara = data.ToCharArray();
+              for(int i = 0; i < chara.Length; i++) { 
+                 System.Console.Write(chara[i]);
+              }
+          }*/
+        public const string inputFileForEncode = @"D:\c# vp\books\LZSS\one\inputforENcodecode.txt";
+        private const string outputFileForEncode = @"D:\c# vp\books\LZSS\one\outputforencoding.txt";
+        private const string inputFileForDecode = @"D:\c# vp\books\LZSS\one\outputforencoding.txt";
+        private const string outputFileForDecode = @"D:\c# vp\books\LZSS\one\outputfordecoding.txt";
+        public static void Main(string[] args)
         {
-            try
-            {
-                while (true)
-                {
-                    Console.WriteLine("Enter \"encode\" to encode file 'InputToEncode.txt' in file 'EncodedOutput.txt'");
-                    Console.WriteLine("Enter \"decode\" to decode file 'EncodedOutput.txt' in file 'DecodedOutput.txt'");
-                    Console.Write("Enter a command: ");
-                    var inputCommand = Console.ReadLine();
-                    inputCommand = inputCommand.ToLower();
-                    if (inputCommand == "encode")
-                    {
-                       
-                        Compress.Encode(InputFileNameForEncode, OutputFileNameForEncode);
-                       
-                        break;
-                    }
-                    else if (inputCommand == "decode")
-                    {
-                        
-                        Compress.Decode(InputFileNameForDecode, OutputFileNameForDecode);
-                        
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input command! Try again...");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        
-        }
-        */
-    }
-}
 
+            //string data1 = "ali is a good boy";
+            //  data(data1);
+            CompressClass comObj = new CompressClass();
+            Decompress decompressObj = new Decompress();
+            
+               
+                    comObj.EncodeFile(inputFileForEncode, outputFileForEncode);
+                //  Console.WriteLine("Time elapsed: " + (double)watch.ElapsedMilliseconds / 1000 + " s");
+                    Console.WriteLine("file is encoded");
+                    
+                       
+                    decompressObj.Decode(inputFileForDecode, outputFileForDecode);
+                       
+                       
+                    
+                
+           
+        }
+
+
+    }
+}   

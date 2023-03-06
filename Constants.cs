@@ -1,29 +1,42 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace LZSSHashMap
+
+namespace LZSS
 {
-    internal class Constants
+
+    public static class Constants
     {
-        public const int WindowSize = 4096;
+        private const int windowSize = 4096; // 0X0FFF (size of sliding window)
+        private const int nullIndex = windowSize + 1;
+        private const int hashSize = 1024;
+        private  const int maxUncoded = 2;
+        private const int lookAheadArraySize = 16 + maxUncoded; //size of lookahead window
+        private const int breakEven = 1;
+        private const int endOFStream = 0;
+        private const int unUsed = 0;
+       
 
-        public const int NullIndex = WindowSize + 1;
-
-        public const int MaxUncoded = 2;
-
-        public const int MaxCoded = MaxUncoded + 16;
-
-        public const int HashSize = 1024;
-        public struct EncodedString
+        //properties of attributes
+       
+        public struct matchData
         {
-            // Offset to start of longest match
-            public int Offset { get; set; }
-
-            // Length of longest match
-            public int Length { get; set; }
+            public int matchLength { set; get; }
+            public int offset { set; get; }
         }
-    }
-}
+        
+        public static int NullIndex { get { return nullIndex; } }
+        public static int HashSize { get { return hashSize; } }
+        public static int WindowSize { get { return windowSize; } }
+        public static int MaxUncoded { get { return maxUncoded; } }
+        public static int LookAheadArraySize { get { return lookAheadArraySize; } }
+        public static int BreakEven { get { return breakEven; } }
+        public static int inputFileEnds { get { return endOFStream; } }
+        public static int Null { get { return unUsed; } }
+       
+
+    }}
+
